@@ -12,6 +12,11 @@
 		EC090DF720111DFA0042BFB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC090DF520111DFA0042BFB4 /* Main.storyboard */; };
 		EC090DF920111DFA0042BFB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC090DF820111DFA0042BFB4 /* Assets.xcassets */; };
 		EC090DFC20111DFA0042BFB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC090DFA20111DFA0042BFB4 /* LaunchScreen.storyboard */; };
+		EC63BA582013E5E300188E5F /* WAViewFavoriteListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA572013E5E300188E5F /* WAViewFavoriteListController.swift */; };
+		EC63BA5A2013E60200188E5F /* WAViewAddFavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA592013E60200188E5F /* WAViewAddFavoriteController.swift */; };
+		EC63BA5C2013E61300188E5F /* WAViewFavoriteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA5B2013E61300188E5F /* WAViewFavoriteDetailController.swift */; };
+		EC63BA5E2013E62000188E5F /* WAViewMyPlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA5D2013E62000188E5F /* WAViewMyPlaceController.swift */; };
+		EC63BA602013E62F00188E5F /* WAViewAPICredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA5F2013E62F00188E5F /* WAViewAPICredits.swift */; };
 		EC85864720134A4600A57C4C /* WAServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864620134A4600A57C4C /* WAServiceManager.swift */; };
 		EC85864920134B4900A57C4C /* WALocationWheater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864820134B4900A57C4C /* WALocationWheater.swift */; };
 		EC85864B20134C2800A57C4C /* WAWheaterDataGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864A20134C2800A57C4C /* WAWheaterDataGlobal.swift */; };
@@ -34,6 +39,11 @@
 		EC090DF820111DFA0042BFB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC090DFB20111DFA0042BFB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC090DFD20111DFA0042BFB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC63BA572013E5E300188E5F /* WAViewFavoriteListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewFavoriteListController.swift; sourceTree = "<group>"; };
+		EC63BA592013E60200188E5F /* WAViewAddFavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewAddFavoriteController.swift; sourceTree = "<group>"; };
+		EC63BA5B2013E61300188E5F /* WAViewFavoriteDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewFavoriteDetailController.swift; sourceTree = "<group>"; };
+		EC63BA5D2013E62000188E5F /* WAViewMyPlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewMyPlaceController.swift; sourceTree = "<group>"; };
+		EC63BA5F2013E62F00188E5F /* WAViewAPICredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewAPICredits.swift; sourceTree = "<group>"; };
 		EC85864620134A4600A57C4C /* WAServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAServiceManager.swift; sourceTree = "<group>"; };
 		EC85864820134B4900A57C4C /* WALocationWheater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WALocationWheater.swift; sourceTree = "<group>"; };
 		EC85864A20134C2800A57C4C /* WAWheaterDataGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAWheaterDataGlobal.swift; sourceTree = "<group>"; };
@@ -112,6 +122,11 @@
 		ECB2803B201124900038E7CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EC63BA572013E5E300188E5F /* WAViewFavoriteListController.swift */,
+				EC63BA592013E60200188E5F /* WAViewAddFavoriteController.swift */,
+				EC63BA5B2013E61300188E5F /* WAViewFavoriteDetailController.swift */,
+				EC63BA5D2013E62000188E5F /* WAViewMyPlaceController.swift */,
+				EC63BA5F2013E62F00188E5F /* WAViewAPICredits.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,14 +287,19 @@
 			files = (
 				EC96BDD420135D6900CED27D /* WALocation.swift in Sources */,
 				EC85864F20134DCE00A57C4C /* WAWheaterEnums.swift in Sources */,
+				EC63BA5A2013E60200188E5F /* WAViewAddFavoriteController.swift in Sources */,
 				EC96BDD620135F3600CED27D /* WAWheaterDataDayGlobal.swift in Sources */,
 				EC85864720134A4600A57C4C /* WAServiceManager.swift in Sources */,
 				EC090DF020111DFA0042BFB4 /* AppDelegate.swift in Sources */,
 				EC96BDD820137A8200CED27D /* WALocationAndWheater.swift in Sources */,
+				EC63BA5C2013E61300188E5F /* WAViewFavoriteDetailController.swift in Sources */,
 				EC96BDD220135C6F00CED27D /* WACacheManager.swift in Sources */,
 				EC85864920134B4900A57C4C /* WALocationWheater.swift in Sources */,
+				EC63BA582013E5E300188E5F /* WAViewFavoriteListController.swift in Sources */,
 				EC85864D20134C7C00A57C4C /* WAWheaterDataByDay.swift in Sources */,
+				EC63BA602013E62F00188E5F /* WAViewAPICredits.swift in Sources */,
 				EC85864B20134C2800A57C4C /* WAWheaterDataGlobal.swift in Sources */,
+				EC63BA5E2013E62000188E5F /* WAViewMyPlaceController.swift in Sources */,
 				EC96BDD02013530500CED27D /* WAWheaterDataGeneric.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
