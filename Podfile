@@ -9,4 +9,5 @@ target 'Wheater App' do
 
   pod 'CocoaLumberjack/Swift'
   pod 'Alamofire', '~> 4.5'
+  pod 'SwiftyJSON'
 end

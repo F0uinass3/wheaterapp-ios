@@ -3,15 +3,18 @@ PODS:
   - CocoaLumberjack/Default (3.3.0)
   - CocoaLumberjack/Swift (3.3.0):
     - CocoaLumberjack/Default
+  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - CocoaLumberjack/Swift
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   CocoaLumberjack: 3c8c74683302f9012bb168e1c4b7ae3c0b558431
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 9486e36f7a6de225436786d009194b6f18526677
+PODFILE CHECKSUM: 02c58d2e8c52aa96156f2a1bd34440a2aa3b4cfd
 
 COCOAPODS: 1.2.1
