@@ -119,14 +119,38 @@
 			path = "Wheater App";
 			sourceTree = "<group>";
 		};
-		ECB2803B201124900038E7CA /* Views */ = {
+		EC63BA612013E8A000188E5F /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
 				EC63BA572013E5E300188E5F /* WAViewFavoriteListController.swift */,
 				EC63BA592013E60200188E5F /* WAViewAddFavoriteController.swift */,
 				EC63BA5B2013E61300188E5F /* WAViewFavoriteDetailController.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		EC63BA622013E8BC00188E5F /* MyPlace */ = {
+			isa = PBXGroup;
+			children = (
 				EC63BA5D2013E62000188E5F /* WAViewMyPlaceController.swift */,
+			);
+			path = MyPlace;
+			sourceTree = "<group>";
+		};
+		EC63BA632013E8C700188E5F /* Credits */ = {
+			isa = PBXGroup;
+			children = (
 				EC63BA5F2013E62F00188E5F /* WAViewAPICredits.swift */,
+			);
+			path = Credits;
+			sourceTree = "<group>";
+		};
+		ECB2803B201124900038E7CA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EC63BA632013E8C700188E5F /* Credits */,
+				EC63BA622013E8BC00188E5F /* MyPlace */,
+				EC63BA612013E8A000188E5F /* Favorites */,
 			);
 			path = Views;
 			sourceTree = "<group>";
