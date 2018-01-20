@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 
 class WAWheaterDataGeneric : NSObject {
     
@@ -30,7 +30,83 @@ class WAWheaterDataGeneric : NSObject {
     var visibility : Double = 0//5.97,
     var ozone : Double = 0//351.34
     
-    init(json: Any) {
-        
+    init(json: Any?) {
+        if let datas = json as? Dictionary<String, JSON> {
+            if let t = datas["time"]?.double {
+                self.time = NSDate(timeIntervalSince1970: t)
+            }
+            if let sm = datas["summary"]?.string {
+                self.summary = sm
+            }
+            if let ic = datas["icon"]?.string {
+                self.icon = WAEnumConverter.convert(byString: ic)
+            }
+            if let pInt = datas["precipIntensity"]?.double {
+                self.precipIntensity = pInt
+            }
+            if let pProb = datas["precipProbability"]?.double {
+                self.precipProbability = pProb
+            }
+            if let pTyp = datas["precipType"]?.string {
+                self.precipType = WAEnumConverter.convert(byString: pTyp)
+            }
+            if let tp = datas["temperature"]?.double {
+                self.temperature = tp
+            }
+            if let apt = datas["apparentTemperature"]?.double {
+                self.apparentTemperature = apt
+            }
+            if let dwp = datas["dewPoint"]?.double {
+                self.dewPoint = dwp
+            }
+            if let hum = datas["humidity"]?.double {
+                self.humidity = hum
+            }
+            if let press = datas["pressure"]?.double {
+                self.pressure = press
+            }
+            if let wspd = datas["windSpeed"]?.double {
+                self.windSpeed = wspd
+            }
+            if let wgst = datas["windGust"]?.double {
+                self.windGust = wgst
+            }
+            if let wbrg = datas["windBearing"]?.int32 {
+                self.windBearing = wbrg
+            }
+            if let cclv = datas["cloudCover"]?.double {
+                self.cloudCover = cclv
+            }
+            if let uv = datas["uvIndex"]?.int32 {
+                self.uvIndex = uv
+            }
+            if let visb = datas["visibility"]?.double {
+                self.visibility = visb
+            }
+            if let ozn = datas["ozone"]?.double {
+                self.ozone = ozn
+            }
+        }
+    }
+    func toJSON() -> Dictionary<String, Any?> {
+        return [
+            "time": self.time?.timeIntervalSince1970,
+            "icon" : WAEnumConverter.reverse(byIcon: self.icon),
+            "precipIntensity" : self.precipIntensity,
+            "precipProbability" : self.precipProbability,
+            "precipType" : WAEnumConverter.reverse(byIcon: self.precipType),
+            "temperature" : self.temperature,
+            "apparentTemperature" : self.apparentTemperature,
+            "dewPoint" : self.dewPoint,
+            "humidity" : self.humidity,
+            "pressure" : self.pressure,
+            "windSpeed" : self.windSpeed,
+            "windGust" : self.windGust,
+            "windBearing" : self.windBearing,
+            "cloudCover" : self.cloudCover,
+            "uvIndex" : self.uvIndex,
+            "visibility" : self.visibility,
+            "ozone" : self.ozone
+        ]
     }
 }

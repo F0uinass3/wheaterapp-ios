@@ -12,7 +12,6 @@
 		EC090DF720111DFA0042BFB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC090DF520111DFA0042BFB4 /* Main.storyboard */; };
 		EC090DF920111DFA0042BFB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC090DF820111DFA0042BFB4 /* Assets.xcassets */; };
 		EC090DFC20111DFA0042BFB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC090DFA20111DFA0042BFB4 /* LaunchScreen.storyboard */; };
-		EC8586452013494900A57C4C /* WAConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8586442013494900A57C4C /* WAConfigurationManager.swift */; };
 		EC85864720134A4600A57C4C /* WAServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864620134A4600A57C4C /* WAServiceManager.swift */; };
 		EC85864920134B4900A57C4C /* WALocationWheater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864820134B4900A57C4C /* WALocationWheater.swift */; };
 		EC85864B20134C2800A57C4C /* WAWheaterDataGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864A20134C2800A57C4C /* WAWheaterDataGlobal.swift */; };
@@ -22,6 +21,7 @@
 		EC96BDD220135C6F00CED27D /* WACacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BDD120135C6F00CED27D /* WACacheManager.swift */; };
 		EC96BDD420135D6900CED27D /* WALocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BDD320135D6900CED27D /* WALocation.swift */; };
 		EC96BDD620135F3600CED27D /* WAWheaterDataDayGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BDD520135F3600CED27D /* WAWheaterDataDayGlobal.swift */; };
+		EC96BDD820137A8200CED27D /* WALocationAndWheater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BDD720137A8200CED27D /* WALocationAndWheater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,6 @@
 		EC090DF820111DFA0042BFB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC090DFB20111DFA0042BFB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC090DFD20111DFA0042BFB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EC8586442013494900A57C4C /* WAConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAConfigurationManager.swift; sourceTree = "<group>"; };
 		EC85864620134A4600A57C4C /* WAServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAServiceManager.swift; sourceTree = "<group>"; };
 		EC85864820134B4900A57C4C /* WALocationWheater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WALocationWheater.swift; sourceTree = "<group>"; };
 		EC85864A20134C2800A57C4C /* WAWheaterDataGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAWheaterDataGlobal.swift; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		EC96BDD120135C6F00CED27D /* WACacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WACacheManager.swift; sourceTree = "<group>"; };
 		EC96BDD320135D6900CED27D /* WALocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WALocation.swift; sourceTree = "<group>"; };
 		EC96BDD520135F3600CED27D /* WAWheaterDataDayGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAWheaterDataDayGlobal.swift; sourceTree = "<group>"; };
+		EC96BDD720137A8200CED27D /* WALocationAndWheater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WALocationAndWheater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +126,7 @@
 				EC96BDCF2013530500CED27D /* WAWheaterDataGeneric.swift */,
 				EC96BDD320135D6900CED27D /* WALocation.swift */,
 				EC96BDD520135F3600CED27D /* WAWheaterDataDayGlobal.swift */,
+				EC96BDD720137A8200CED27D /* WALocationAndWheater.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -133,7 +134,6 @@
 		ECB2803D2011249E0038E7CA /* DAL */ = {
 			isa = PBXGroup;
 			children = (
-				EC8586442013494900A57C4C /* WAConfigurationManager.swift */,
 				EC85864620134A4600A57C4C /* WAServiceManager.swift */,
 				EC96BDD120135C6F00CED27D /* WACacheManager.swift */,
 			);
@@ -272,10 +272,10 @@
 			files = (
 				EC96BDD420135D6900CED27D /* WALocation.swift in Sources */,
 				EC85864F20134DCE00A57C4C /* WAWheaterEnums.swift in Sources */,
-				EC8586452013494900A57C4C /* WAConfigurationManager.swift in Sources */,
 				EC96BDD620135F3600CED27D /* WAWheaterDataDayGlobal.swift in Sources */,
 				EC85864720134A4600A57C4C /* WAServiceManager.swift in Sources */,
 				EC090DF020111DFA0042BFB4 /* AppDelegate.swift in Sources */,
+				EC96BDD820137A8200CED27D /* WALocationAndWheater.swift in Sources */,
 				EC96BDD220135C6F00CED27D /* WACacheManager.swift in Sources */,
 				EC85864920134B4900A57C4C /* WALocationWheater.swift in Sources */,
 				EC85864D20134C7C00A57C4C /* WAWheaterDataByDay.swift in Sources */,
