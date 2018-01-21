@@ -73,4 +73,20 @@ class WACaheManager : NSObject {
         return self.favorites
         
     }
+    
+    func getCredits() -> Array<WACredit> {
+        var results = Array<WACredit>()
+        if let path = Bundle.main.path(forResource: "credits", ofType: "json"){
+            if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
+                if let json = try? JSON(data) {
+                    if let arr = json["credits"].array {
+                        for c in arr {
+                            results.append(WACredit(url: c["url"].stringValue, title: c["title"].stringValue, imageName: c["imageName"].stringValue, details: c["description"].stringValue))
+                        }
+                    }
+                }
+            }
+        }
+        return results
+    }
 }

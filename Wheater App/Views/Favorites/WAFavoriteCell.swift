@@ -25,6 +25,10 @@ class WAFavoriteCell : UITableViewCell {
     
     var item : WALocationAndWheater? = nil
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        layoutMargins = UIEdgeInsetsMake(10, 0, 10, 0)
+    }
     
     func setItem(item: WALocationAndWheater) {
         self.item = item

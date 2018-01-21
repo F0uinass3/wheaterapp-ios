@@ -98,5 +98,19 @@ extension WAViewFavoriteListController : UITableViewDelegate {
         self.performSegue(withIdentifier: WAViewFavoriteListController.segueNavigateDetail, sender: self)
 
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            let item = self.items[indexPath.row]
+            if let location = item.location {
+                WACaheManager.sharedInstance.remove(byId: location.geonameId)
+                self.reload()
+            }
+        }
+    }
 }
 

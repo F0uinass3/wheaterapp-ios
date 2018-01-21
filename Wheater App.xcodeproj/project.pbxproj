@@ -26,6 +26,8 @@
 		EC63BA7F2015007300188E5F /* WADayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA7E2015007300188E5F /* WADayCell.swift */; };
 		EC63BA812015092200188E5F /* WAHourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA802015092200188E5F /* WAHourCell.swift */; };
 		EC63BA8320150E8500188E5F /* WACreditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA8220150E8500188E5F /* WACreditCell.swift */; };
+		EC63BA8520150FD300188E5F /* WACredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA8420150FD300188E5F /* WACredit.swift */; };
+		EC63BA87201515A200188E5F /* credits.json in Resources */ = {isa = PBXBuildFile; fileRef = EC63BA86201515A200188E5F /* credits.json */; };
 		EC85864720134A4600A57C4C /* WAServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864620134A4600A57C4C /* WAServiceManager.swift */; };
 		EC85864920134B4900A57C4C /* WALocationWheater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864820134B4900A57C4C /* WALocationWheater.swift */; };
 		EC85864B20134C2800A57C4C /* WAWheaterDataGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864A20134C2800A57C4C /* WAWheaterDataGlobal.swift */; };
@@ -62,6 +64,8 @@
 		EC63BA7E2015007300188E5F /* WADayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WADayCell.swift; sourceTree = "<group>"; };
 		EC63BA802015092200188E5F /* WAHourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAHourCell.swift; sourceTree = "<group>"; };
 		EC63BA8220150E8500188E5F /* WACreditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WACreditCell.swift; sourceTree = "<group>"; };
+		EC63BA8420150FD300188E5F /* WACredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WACredit.swift; sourceTree = "<group>"; };
+		EC63BA86201515A200188E5F /* credits.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = credits.json; sourceTree = "<group>"; };
 		EC85864620134A4600A57C4C /* WAServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAServiceManager.swift; sourceTree = "<group>"; };
 		EC85864820134B4900A57C4C /* WALocationWheater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WALocationWheater.swift; sourceTree = "<group>"; };
 		EC85864A20134C2800A57C4C /* WAWheaterDataGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAWheaterDataGlobal.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 			children = (
 				EC090DF820111DFA0042BFB4 /* Assets.xcassets */,
 				EC63BA6B2013F80600188E5F /* Labels.strings */,
+				EC63BA86201515A200188E5F /* credits.json */,
 			);
 			path = Ressources;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				EC96BDD320135D6900CED27D /* WALocation.swift */,
 				EC96BDD520135F3600CED27D /* WAWheaterDataDayGlobal.swift */,
 				EC96BDD720137A8200CED27D /* WALocationAndWheater.swift */,
+				EC63BA8420150FD300188E5F /* WACredit.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC090DFC20111DFA0042BFB4 /* LaunchScreen.storyboard in Resources */,
+				EC63BA87201515A200188E5F /* credits.json in Resources */,
 				EC63BA692013F80600188E5F /* Labels.strings in Resources */,
 				EC090DF920111DFA0042BFB4 /* Assets.xcassets in Resources */,
 				EC090DF720111DFA0042BFB4 /* Main.storyboard in Resources */,
@@ -353,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC63BA8520150FD300188E5F /* WACredit.swift in Sources */,
 				EC63BA7F2015007300188E5F /* WADayCell.swift in Sources */,
 				EC96BDD420135D6900CED27D /* WALocation.swift in Sources */,
 				EC85864F20134DCE00A57C4C /* WAWheaterEnums.swift in Sources */,
