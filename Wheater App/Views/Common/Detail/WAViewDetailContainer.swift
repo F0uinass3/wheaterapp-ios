@@ -19,6 +19,13 @@ class WAViewDetailContainer : UIViewController {
     @IBOutlet weak var pageContainer: UIView!
     @IBOutlet weak var pageControl: UISegmentedControl!
     
+    
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var imageWheater: UIImageView!
+    @IBOutlet weak var sunriseTimeLabel: UILabel!
+    @IBOutlet weak var sunsetTimeLabel: UILabel!
+    @IBOutlet weak var temperaturesLabel: UILabel!
+    
     fileprivate lazy var pages: Array<UIViewController> = {
         var controllers = Array<UIViewController>()
         if let wh = self.wheater {
@@ -61,13 +68,15 @@ class WAViewDetailContainer : UIViewController {
     
     private func buildView() {
         if let current = self.wheater, let location = current.location, let wheater = current.wheater {
+            self.navigationItem.title = String(format:"%@", location.name)
             
-            self.title = String(format:"%@", location.name)
-            for p in self.pages {
-                self.pageContainer.addSubview(p.view)
-            }
+            self.summaryLabel.text = wheater.currently.summary
+            let today = wheater.daily.data[0]
+            self.sunsetTimeLabel.text = today.sunsetTime != nil ? today.sunsetTime!.toStringHour()  : ""
+            self.sunriseTimeLabel.text = today.sunriseTime != nil ? today.sunriseTime!.toStringHour() : ""
+            self.temperaturesLabel.text = String(format:"Min : %lu° / Max : %lu°", Int(today.temperatureLow),Int(today.temperatureHigh))
             self.pageControl.selectedSegmentIndex = 0
-            self.show(index: 0)
+            self.pageChanged(self)
         }
     }
     

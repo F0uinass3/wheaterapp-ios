@@ -15,19 +15,19 @@ class WAWheaterDataByDay : WAWheaterDataGeneric {
     //MARK: Daily custom
     var moonPhase : Double = 0 // 0.1,
     var apparentTemperatureHigh : Double = 0
-    var apparentTemperatureHighTime : NSDate? = nil
+    var apparentTemperatureHighTime : Date? = nil
     var apparentTemperatureLow : Double = 0
-    var apparentTemperatureLowTime : NSDate? = nil
-    var sunriseTime : NSDate? = nil //1516433796,
-    var sunsetTime : NSDate? = nil //1516465784,
+    var apparentTemperatureLowTime : Date? = nil
+    var sunriseTime : Date? = nil //1516433796,
+    var sunsetTime : Date? = nil //1516465784,
     var precipIntensityMax: Double = 0 //0.0434,
-    var precipIntensityMaxTime : NSDate? = nil//1516438800,
+    var precipIntensityMaxTime : Date? = nil//1516438800,
     var temperatureHigh: Double = 0 // 52.66,
-    var temperatureHighTime : NSDate? = nil //1516464000,
+    var temperatureHighTime : Date? = nil //1516464000,
     var temperatureLow : Double = 0 //45.36,
-    var temperatureLowTime : NSDate? = nil //1516518000,
-    var windGustTime: NSDate? = nil//1516460400,
-    var uvIndexTime : NSDate? = nil //1516446000,
+    var temperatureLowTime : Date? = nil //1516518000,
+    var windGustTime: Date? = nil//1516460400,
+    var uvIndexTime : Date? = nil //1516446000,
 
     override init(json: Any?) {
         super.init(json: json)
@@ -39,43 +39,43 @@ class WAWheaterDataByDay : WAWheaterDataGeneric {
                 self.apparentTemperatureHigh = ath
             }
             if let athm = datas["apparentTemperatureHighTime"]?.double {
-                self.apparentTemperatureHighTime = NSDate(timeIntervalSince1970: athm)
+                self.apparentTemperatureHighTime = Date(timeIntervalSince1970: athm)
             }
             if let atl = datas["apparentTemperatureLow"]?.double {
                 self.apparentTemperatureLow = atl
             }
             if let atlt = datas["apparentTemperatureLowTime"]?.double {
-                self.apparentTemperatureLowTime = NSDate(timeIntervalSince1970: atlt)
+                self.apparentTemperatureLowTime = Date(timeIntervalSince1970: atlt)
             }
             if let snrt = datas["sunriseTime"]?.double {
-                self.sunriseTime = NSDate(timeIntervalSince1970: snrt)
+                self.sunriseTime = Date(timeIntervalSince1970: snrt)
             }
             if let snst = datas["sunsetTime"]?.double {
-                self.sunsetTime = NSDate(timeIntervalSince1970: snst)
+                self.sunsetTime = Date(timeIntervalSince1970: snst)
             }
             if let pim = datas["precipIntensityMax"]?.double {
                 self.precipIntensityMax = pim
             }
             if let pimt = datas["precipIntensityMaxTime"]?.double {
-                self.precipIntensityMaxTime = NSDate(timeIntervalSince1970: pimt)
+                self.precipIntensityMaxTime = Date(timeIntervalSince1970: pimt)
             }
             if let th = datas["temperatureHigh"]?.double {
                 self.temperatureHigh = th
             }
             if let tht = datas["temperatureHighTime"]?.double {
-                self.temperatureHighTime = NSDate(timeIntervalSince1970: tht)
+                self.temperatureHighTime = Date(timeIntervalSince1970: tht)
             }
             if let tl = datas["temperatureLow"]?.double {
                 self.temperatureLow = tl
             }
             if let tlt = datas["temperatureLowTime"]?.double {
-                self.temperatureLowTime = NSDate(timeIntervalSince1970: tlt)
+                self.temperatureLowTime = Date(timeIntervalSince1970: tlt)
             }
             if let wgt = datas["windGustTime"]?.double {
-                self.windGustTime = NSDate(timeIntervalSince1970: wgt)
+                self.windGustTime = Date(timeIntervalSince1970: wgt)
             }
             if let uvt = datas["uvIndexTime"]?.double {
-                self.uvIndexTime = NSDate(timeIntervalSince1970: uvt)
+                self.uvIndexTime = Date(timeIntervalSince1970: uvt)
             }
         }
     }
@@ -84,33 +84,33 @@ class WAWheaterDataByDay : WAWheaterDataGeneric {
         super.init(coder: aDecoder)
         moonPhase = aDecoder.decodeDouble(forKey: "moonPhase")
         if let atht = aDecoder.decodeObject(forKey: "apparentTemperatureHighTime") as? Double {
-            apparentTemperatureHighTime = NSDate(timeIntervalSince1970: atht)
+            apparentTemperatureHighTime = Date(timeIntervalSince1970: atht)
         }
         if let atlt = aDecoder.decodeObject(forKey: "apparentTemperatureLowTime") as? Double {
-            apparentTemperatureLowTime = NSDate(timeIntervalSince1970: atlt)
+            apparentTemperatureLowTime = Date(timeIntervalSince1970: atlt)
         }
         
         if let snrt = aDecoder.decodeObject(forKey: "sunriseTime") as? Double {
-            sunriseTime = NSDate(timeIntervalSince1970: snrt)
+            sunriseTime = Date(timeIntervalSince1970: snrt)
         }
         
         if let snst = aDecoder.decodeObject(forKey: "sunsetTime") as? Double {
-            sunsetTime = NSDate(timeIntervalSince1970: snst)
+            sunsetTime = Date(timeIntervalSince1970: snst)
         }
         if let pimt = aDecoder.decodeObject(forKey: "precipIntensityMaxTime") as? Double {
-            precipIntensityMaxTime = NSDate(timeIntervalSince1970: pimt)
+            precipIntensityMaxTime = Date(timeIntervalSince1970: pimt)
         }
         if let tht = aDecoder.decodeObject(forKey: "temperatureHighTime") as? Double {
-            temperatureHighTime = NSDate(timeIntervalSince1970: tht)
+            temperatureHighTime = Date(timeIntervalSince1970: tht)
         }
         if let tlt = aDecoder.decodeObject(forKey: "temperatureLowTime") as? Double {
-            temperatureLowTime = NSDate(timeIntervalSince1970: tlt)
+            temperatureLowTime = Date(timeIntervalSince1970: tlt)
         }
         if let wgt = aDecoder.decodeObject(forKey: "windGustTime") as? Double {
-            windGustTime = NSDate(timeIntervalSince1970: wgt)
+            windGustTime = Date(timeIntervalSince1970: wgt)
         }
         if let uvt = aDecoder.decodeObject(forKey: "uvIndexTime") as? Double {
-            uvIndexTime = NSDate(timeIntervalSince1970: uvt)
+            uvIndexTime = Date(timeIntervalSince1970: uvt)
         }
         
         

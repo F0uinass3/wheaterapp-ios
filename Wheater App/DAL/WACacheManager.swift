@@ -21,12 +21,7 @@ class WACaheManager : NSObject {
     private let kCacheKeyCachedFavoritePlaceUpdateOn : String = "kCacheKeyCachedFavoritePlaceUpdateOn"
     
     private let kKeyFavorites : String = "favorites"
-    
-    private let kCacheKeyCachedMyLocation : String = "kCacheKeyCachedMyLocation"
-    private let kCacheKeyCachedMyLocationUpdatedOn : String = "kCacheKeyCachedMyLocationUpdatedOn"
-    
     private var favorites : Array<WALocationAndWheater> = Array<WALocationAndWheater>()
-    private var myPlace : WALocationAndWheater? = nil
     
     
     //MARK: Init
@@ -77,15 +72,5 @@ class WACaheManager : NSObject {
         
         return self.favorites
         
-    }
-    
-    
-    //MARK: handle my location cache
-    func storeMyLocation(datas:WALocationAndWheater) {
-        
-    }
-    
-    func getMyLocation() -> WALocationAndWheater? {
-        return self.myPlace
     }
 }

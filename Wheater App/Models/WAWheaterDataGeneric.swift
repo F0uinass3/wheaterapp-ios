@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class WAWheaterDataGeneric : NSObject, NSCoding {
     
-    var time : NSDate? = nil//1516442400,
+    var time : Date? = nil//1516442400,
     var summary : String? = nil//"Pluie Faible",
     var icon : WAIconType = .none
     var precipIntensity : Double = 0//0.0328,
@@ -33,7 +33,7 @@ class WAWheaterDataGeneric : NSObject, NSCoding {
     init(json: Any?) {
         if let datas = json as? Dictionary<String, JSON> {
             if let t = datas["time"]?.double {
-                self.time = NSDate(timeIntervalSince1970: t)
+                self.time = Date(timeIntervalSince1970: t)
             }
             if let sm = datas["summary"]?.string {
                 self.summary = sm
@@ -90,7 +90,7 @@ class WAWheaterDataGeneric : NSObject, NSCoding {
     }
     required init?(coder aDecoder: NSCoder) {
         if let t = aDecoder.decodeObject(forKey: "time") as? Double {
-            time = NSDate(timeIntervalSince1970: t)
+            time = Date(timeIntervalSince1970: t)
         }
         summary = aDecoder.decodeObject(forKey: "summary") as? String
         icon = WAEnumConverter.convert(byString: aDecoder.decodeObject(forKey: "icon") as! String)

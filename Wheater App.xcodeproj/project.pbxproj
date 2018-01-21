@@ -15,7 +15,6 @@
 		EC63BA582013E5E300188E5F /* WAViewFavoriteListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA572013E5E300188E5F /* WAViewFavoriteListController.swift */; };
 		EC63BA5A2013E60200188E5F /* WAViewAddFavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA592013E60200188E5F /* WAViewAddFavoriteController.swift */; };
 		EC63BA5C2013E61300188E5F /* WAViewDetailCurrentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA5B2013E61300188E5F /* WAViewDetailCurrentController.swift */; };
-		EC63BA5E2013E62000188E5F /* WAViewMyPlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA5D2013E62000188E5F /* WAViewMyPlaceController.swift */; };
 		EC63BA602013E62F00188E5F /* WAViewAPICredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA5F2013E62F00188E5F /* WAViewAPICredits.swift */; };
 		EC63BA652013F6DA00188E5F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA642013F6DA00188E5F /* UIViewController+Extensions.swift */; };
 		EC63BA692013F80600188E5F /* Labels.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC63BA6B2013F80600188E5F /* Labels.strings */; };
@@ -24,6 +23,9 @@
 		EC63BA772014BF2700188E5F /* WAViewDetailByHourController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA762014BF2700188E5F /* WAViewDetailByHourController.swift */; };
 		EC63BA792014BF5A00188E5F /* WAViewDetailByDayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA782014BF5A00188E5F /* WAViewDetailByDayController.swift */; };
 		EC63BA7B2014C60E00188E5F /* WAViewDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA7A2014C60E00188E5F /* WAViewDetailContainer.swift */; };
+		EC63BA7F2015007300188E5F /* WADayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA7E2015007300188E5F /* WADayCell.swift */; };
+		EC63BA812015092200188E5F /* WAHourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA802015092200188E5F /* WAHourCell.swift */; };
+		EC63BA8320150E8500188E5F /* WACreditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC63BA8220150E8500188E5F /* WACreditCell.swift */; };
 		EC85864720134A4600A57C4C /* WAServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864620134A4600A57C4C /* WAServiceManager.swift */; };
 		EC85864920134B4900A57C4C /* WALocationWheater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864820134B4900A57C4C /* WALocationWheater.swift */; };
 		EC85864B20134C2800A57C4C /* WAWheaterDataGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85864A20134C2800A57C4C /* WAWheaterDataGlobal.swift */; };
@@ -49,16 +51,17 @@
 		EC63BA572013E5E300188E5F /* WAViewFavoriteListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewFavoriteListController.swift; sourceTree = "<group>"; };
 		EC63BA592013E60200188E5F /* WAViewAddFavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewAddFavoriteController.swift; sourceTree = "<group>"; };
 		EC63BA5B2013E61300188E5F /* WAViewDetailCurrentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewDetailCurrentController.swift; sourceTree = "<group>"; };
-		EC63BA5D2013E62000188E5F /* WAViewMyPlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewMyPlaceController.swift; sourceTree = "<group>"; };
 		EC63BA5F2013E62F00188E5F /* WAViewAPICredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewAPICredits.swift; sourceTree = "<group>"; };
 		EC63BA642013F6DA00188E5F /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		EC63BA6A2013F80600188E5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Labels.strings; sourceTree = "<group>"; };
 		EC63BA6C2013F82300188E5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Labels.strings; sourceTree = "<group>"; };
 		EC63BA6E2013F9CF00188E5F /* WAFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAFavoriteCell.swift; sourceTree = "<group>"; };
 		EC63BA702014B1E800188E5F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		EC63BA762014BF2700188E5F /* WAViewDetailByHourController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewDetailByHourController.swift; sourceTree = "<group>"; };
 		EC63BA782014BF5A00188E5F /* WAViewDetailByDayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewDetailByDayController.swift; sourceTree = "<group>"; };
 		EC63BA7A2014C60E00188E5F /* WAViewDetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAViewDetailContainer.swift; sourceTree = "<group>"; };
+		EC63BA7E2015007300188E5F /* WADayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WADayCell.swift; sourceTree = "<group>"; };
+		EC63BA802015092200188E5F /* WAHourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAHourCell.swift; sourceTree = "<group>"; };
+		EC63BA8220150E8500188E5F /* WACreditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WACreditCell.swift; sourceTree = "<group>"; };
 		EC85864620134A4600A57C4C /* WAServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAServiceManager.swift; sourceTree = "<group>"; };
 		EC85864820134B4900A57C4C /* WALocationWheater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WALocationWheater.swift; sourceTree = "<group>"; };
 		EC85864A20134C2800A57C4C /* WAWheaterDataGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAWheaterDataGlobal.swift; sourceTree = "<group>"; };
@@ -144,18 +147,11 @@
 			path = Favorites;
 			sourceTree = "<group>";
 		};
-		EC63BA622013E8BC00188E5F /* MyPlace */ = {
-			isa = PBXGroup;
-			children = (
-				EC63BA5D2013E62000188E5F /* WAViewMyPlaceController.swift */,
-			);
-			path = MyPlace;
-			sourceTree = "<group>";
-		};
 		EC63BA632013E8C700188E5F /* Credits */ = {
 			isa = PBXGroup;
 			children = (
 				EC63BA5F2013E62F00188E5F /* WAViewAPICredits.swift */,
+				EC63BA8220150E8500188E5F /* WACreditCell.swift */,
 			);
 			path = Credits;
 			sourceTree = "<group>";
@@ -184,6 +180,8 @@
 				EC63BA762014BF2700188E5F /* WAViewDetailByHourController.swift */,
 				EC63BA782014BF5A00188E5F /* WAViewDetailByDayController.swift */,
 				EC63BA7A2014C60E00188E5F /* WAViewDetailContainer.swift */,
+				EC63BA7E2015007300188E5F /* WADayCell.swift */,
+				EC63BA802015092200188E5F /* WAHourCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -193,7 +191,6 @@
 			children = (
 				EC63BA722014BB7C00188E5F /* Common */,
 				EC63BA632013E8C700188E5F /* Credits */,
-				EC63BA622013E8BC00188E5F /* MyPlace */,
 				EC63BA612013E8A000188E5F /* Favorites */,
 			);
 			path = Views;
@@ -356,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC63BA7F2015007300188E5F /* WADayCell.swift in Sources */,
 				EC96BDD420135D6900CED27D /* WALocation.swift in Sources */,
 				EC85864F20134DCE00A57C4C /* WAWheaterEnums.swift in Sources */,
 				EC63BA5A2013E60200188E5F /* WAViewAddFavoriteController.swift in Sources */,
@@ -364,19 +362,20 @@
 				EC63BA652013F6DA00188E5F /* UIViewController+Extensions.swift in Sources */,
 				EC090DF020111DFA0042BFB4 /* AppDelegate.swift in Sources */,
 				EC96BDD820137A8200CED27D /* WALocationAndWheater.swift in Sources */,
+				EC63BA812015092200188E5F /* WAHourCell.swift in Sources */,
 				EC63BA5C2013E61300188E5F /* WAViewDetailCurrentController.swift in Sources */,
 				EC63BA712014B1E800188E5F /* Date+Extensions.swift in Sources */,
 				EC63BA772014BF2700188E5F /* WAViewDetailByHourController.swift in Sources */,
 				EC63BA6F2013F9CF00188E5F /* WAFavoriteCell.swift in Sources */,
 				EC96BDD220135C6F00CED27D /* WACacheManager.swift in Sources */,
 				EC85864920134B4900A57C4C /* WALocationWheater.swift in Sources */,
+				EC63BA8320150E8500188E5F /* WACreditCell.swift in Sources */,
 				EC63BA582013E5E300188E5F /* WAViewFavoriteListController.swift in Sources */,
 				EC85864D20134C7C00A57C4C /* WAWheaterDataByDay.swift in Sources */,
 				EC63BA602013E62F00188E5F /* WAViewAPICredits.swift in Sources */,
 				EC85864B20134C2800A57C4C /* WAWheaterDataGlobal.swift in Sources */,
 				EC63BA7B2014C60E00188E5F /* WAViewDetailContainer.swift in Sources */,
 				EC63BA792014BF5A00188E5F /* WAViewDetailByDayController.swift in Sources */,
-				EC63BA5E2013E62000188E5F /* WAViewMyPlaceController.swift in Sources */,
 				EC96BDD02013530500CED27D /* WAWheaterDataGeneric.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,7 +402,6 @@
 		EC63BA6B2013F80600188E5F /* Labels.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				EC63BA6A2013F80600188E5F /* en */,
 				EC63BA6C2013F82300188E5F /* Base */,
 			);
 			name = Labels.strings;

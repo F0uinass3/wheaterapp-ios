@@ -24,3 +24,24 @@ class WAViewDetailByHourController : UIViewController {
         super.viewWillDisappear(animated)
     }
 }
+extension WAViewDetailByHourController : UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let d = self.datas {
+            return d.data.count
+        } else {
+            return 0
+        }
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: WAHourCell.reusableIdentifier, for: indexPath) as! WAHourCell
+        if let d = self.datas {
+            let item = d.data[indexPath.row]
+            cell.setItem(data: item)
+        }
+        return cell
+    }
+}
+

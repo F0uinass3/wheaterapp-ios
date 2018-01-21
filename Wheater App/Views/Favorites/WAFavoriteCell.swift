@@ -38,6 +38,7 @@ class WAFavoriteCell : UITableViewCell {
             self.countryLabel.text = String(format:"%@ (%@)", location.countryName, location.countryCode)
             self.summaryNowLabel.text = wheater.currently.summary
             self.actualTemperatureLabel.text = String(format:"%lu", Int(wheater.currently.apparentTemperature))
+            self.summaryImage.image = WAEnumConverter.toImage(byIcon: wheater.currently.icon)
         }
     }
 }

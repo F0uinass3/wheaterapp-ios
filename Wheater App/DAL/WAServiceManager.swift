@@ -26,7 +26,7 @@ class WAServiceManager : NSObject {
     //MARK: Private const
     private let kDarkSkyApiKey = "16178161b8aad3e84ceba8441e3e15eb"
     private let kDarkSkyURL = "https://api.darksky.net/forecast/%@/%@" // https://api.darksky.net/forecast/%@/%@lat,%@long
-    
+    //https://www.flaticon.com/
     private let kGeoNameApiAccount = "f0uinasse"
 //    private let kGeoNameURL = "https://secure.geonames.org/searchJSON" // errors occurs in Alamofire BoringSSL
     private let kGeoNameURL = "http://api.geonames.org/searchJSON"

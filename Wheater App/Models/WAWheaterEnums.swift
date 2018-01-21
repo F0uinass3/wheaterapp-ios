@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 //
 //clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
 enum WAIconType {
@@ -86,6 +86,59 @@ class WAEnumConverter {
             return "partly-cloudy-night"
         default:
             return ""
+        }
+    }
+    
+    static func toImage(byIcon ic:WAIconType) -> UIImage? {
+        switch ic {
+        case .clearday:
+            return #imageLiteral(resourceName: "clear")
+        case .clearnight:
+            return #imageLiteral(resourceName: "clear")
+        case .rain:
+            return #imageLiteral(resourceName: "rain")
+        case .snow:
+            return #imageLiteral(resourceName: "snow")
+        case .sleet:
+            return #imageLiteral(resourceName: "sleet")
+        case .wind:
+            return #imageLiteral(resourceName: "wind")
+        case .fog:
+            return #imageLiteral(resourceName: "fog")
+        case .cloudy:
+            return #imageLiteral(resourceName: "day-cloudy")
+        case .partlycloudyday :
+            return #imageLiteral(resourceName: "day-cloudy")
+        case .partlycloudynight:
+            return #imageLiteral(resourceName: "day-cloudy")
+        default:
+            return nil
+        }
+    }
+    
+    static func toImage(byType tp:WAPrecipType) -> UIImage? {
+        switch tp {
+        case .snow:
+            return #imageLiteral(resourceName: "precip-snow")
+        case .rain:
+            return #imageLiteral(resourceName: "precip-rain")
+        case .sleet:
+            return #imageLiteral(resourceName: "precip-snow")
+        default:
+            return nil
+        }
+    }
+    
+    static func toString(byIcon val: WAPrecipType) -> String {
+        switch val {
+        case .snow:
+            return "Neige"
+        case .rain:
+            return "Pluie"
+        case .sleet:
+            return "Neige fondue"
+        default:
+            return "Aucune"
         }
     }
     

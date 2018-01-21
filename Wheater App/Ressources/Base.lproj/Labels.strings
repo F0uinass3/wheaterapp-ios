@@ -10,7 +10,6 @@
 
 "ALERT_TITLE_ERROR" = "Erreur";
 "ALERT_BUTTON_OK" = "Ok";
-
-
 "ERROR_MESSAGE_GEONAME_API_ERROR" = "Une erreur est survenue durant l'appel à Geonames.org : %@";
 "ERROR_MESSAGE_DARKSKY_API_ERROR" = "Une erreur est survenue durant l'appel à DarkSky.net : %@";
+"GENERAL_TEXT_TEMPERATURE" = "Min : %lu / Max : %lu";
