@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.swift
 //  Wheater App
 //
@@ -7,6 +7,18 @@
 //
 
 import UIKit
+import CocoaLumberjack
+
+func DLog(format:String, args:Any?...) {
+    DDLogDebug(String(format:format, args))
+}
+
+func ELog(format:String, args:Any?...) {
+    DDLogError(String(format:format, args))
+}
+func WLog(format:String, args:Any?...) {
+    DDLogWarn(String(format:format, args))
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        DDLog.add(DDTTYLogger.sharedInstance) // TTY = Xcode console
+        
+        let fileLogger: DDFileLogger = DDFileLogger() // File Logger
+        fileLogger.rollingFrequency = TimeInterval(60*60*24)  // 24 hours
+        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
+        DDLog.add(fileLogger)
+        
+        
         return true
     }
 

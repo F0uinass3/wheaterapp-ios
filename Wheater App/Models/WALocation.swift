@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class WALocation : NSObject {
+class WALocation : NSObject, NSCoding {
     
     var name: String = ""
     var countryName : String = ""
@@ -23,50 +23,47 @@ class WALocation : NSObject {
         super.init()
         if let j = json as? JSON {
             if let datas = j.dictionary {
-                self.fetch(datas:datas)
-            }
-            
-        } else if let datas = json as? Dictionary<String, JSON> {
-            self.fetch(datas: datas)
-        }
-    }
-       
-    func fetch(datas: Dictionary<String, JSON>) {
-        if let id =  datas["geonameId"]?.int64 {
-            self.geonameId = id
-        }
-        if let n = datas["name"]?.string {
-            self.name = n
-        }
-        if let cn = datas["countryName"]?.string {
-            self.countryName = cn
-        }
-        if let cc = datas["countryCode"]?.string {
-            self.countryCode = cc
-        }
-        if let lat = datas["lat"]?.string {
-            if let d = Double(lat) {
-                self.latitude = d
-            }
-        }
-        if let long = datas["lng"]?.string {
-            if let d = Double(long) {
-                self.longitude = d
+                if let id =  datas["geonameId"]?.int64 {
+                    self.geonameId = id
+                }
+                if let n = datas["name"]?.string {
+                    self.name = n
+                }
+                if let cn = datas["countryName"]?.string {
+                    self.countryName = cn
+                }
+                if let cc = datas["countryCode"]?.string {
+                    self.countryCode = cc
+                }
+                if let lat = datas["lat"]?.string {
+                    if let d = Double(lat) {
+                        self.latitude = d
+                    }
+                }
+                if let long = datas["lng"]?.string {
+                    if let d = Double(long) {
+                        self.longitude = d
+                    }
+                }
             }
         }
     }
     
-    
-    
-    func toJSON() -> Dictionary<String, Any?> {
-        return [
-            "geonameId":self.geonameId,
-            "name":self.name,
-            "countryName":self.countryName,
-            "countryCode":self.countryCode,
-            "lat":String(self.latitude),
-            "lng":String(self.longitude)
-        ]
-        
+    required init(coder aDecoder: NSCoder) {
+        geonameId = aDecoder.decodeInt64(forKey: "geonameId")
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        countryName = aDecoder.decodeObject(forKey: "countryName") as! String
+        countryCode = aDecoder.decodeObject(forKey: "countryCode") as! String
+        latitude = aDecoder.decodeDouble(forKey: "latitude")
+        longitude = aDecoder.decodeDouble(forKey: "longitude")
     }
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(geonameId, forKey:"geonameId")
+        aCoder.encode(name, forKey:"name")
+        aCoder.encode(countryName, forKey:"countryName")
+        aCoder.encode(countryCode, forKey:"countryCode")
+        aCoder.encode(latitude, forKey:"latitude")
+        aCoder.encode(longitude, forKey:"longitude")
+    }
+
 }

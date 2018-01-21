@@ -80,23 +80,62 @@ class WAWheaterDataByDay : WAWheaterDataGeneric {
         }
     }
     
-    override func toJSON() -> Dictionary<String, Any?> {
-        var sup = super.toJSON()
-        sup["moonPhase"] = self.moonPhase
-        sup["apparentTemperatureHigh"] = self.apparentTemperatureHigh
-        sup["apparentTemperatureHighTime"] = self.apparentTemperatureHighTime?.timeIntervalSince1970
-        sup["apparentTemperatureLow"] = self.apparentTemperatureLow
-        sup["apparentTemperatureLowTime"] = self.apparentTemperatureLowTime?.timeIntervalSince1970
-        sup["sunriseTime"] = self.sunriseTime?.timeIntervalSince1970
-        sup["sunsetTime"] = self.sunsetTime?.timeIntervalSince1970
-        sup["precipIntensityMax"] = self.precipIntensityMax
-        sup["precipIntensityMaxTime"] = self.precipIntensityMaxTime?.timeIntervalSince1970
-        sup["temperatureHigh"] = self.temperatureHigh
-        sup["temperatureHighTime"] = self.temperatureHighTime?.timeIntervalSince1970
-        sup["temperatureLow"] = self.temperatureLow
-        sup["temperatureLowTime"] = self.temperatureLowTime?.timeIntervalSince1970
-        sup["windGustTime"] = self.windGustTime
-        sup["uvIndexTime"] = self.uvIndexTime
-        return sup
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        moonPhase = aDecoder.decodeDouble(forKey: "moonPhase")
+        apparentTemperatureHigh = aDecoder.decodeDouble(forKey: "apparentTemperatureHigh")
+        apparentTemperatureHighTime = NSDate(timeIntervalSince1970: aDecoder.decodeDouble(forKey: "apparentTemperatureHighTime"))
+        apparentTemperatureLow = aDecoder.decodeDouble(forKey: "apparentTemperatureLow")
+        apparentTemperatureLowTime = NSDate(timeIntervalSince1970: aDecoder.decodeDouble(forKey: "apparentTemperatureLowTime"))
+        sunriseTime = NSDate(timeIntervalSince1970: aDecoder.decodeDouble(forKey: "sunriseTime"))
+        sunsetTime = NSDate(timeIntervalSince1970: aDecoder.decodeDouble(forKey: "sunsetTime"))
+        precipIntensityMax = aDecoder.decodeDouble(forKey: "precipIntensityMax")
+        precipIntensityMaxTime = NSDate(timeIntervalSince1970: aDecoder.decodeDouble(forKey: "precipIntensityMaxTime"))
+        temperatureHigh = aDecoder.decodeDouble(forKey: "temperatureHigh")
+        temperatureHighTime = NSDate(timeIntervalSince1970: aDecoder.decodeDouble(forKey: "temperatureHighTime"))
+        temperatureLow = aDecoder.decodeDouble(forKey: "temperatureLow")
+        temperatureLowTime = NSDate(timeIntervalSince1970: aDecoder.decodeDouble(forKey: "temperatureLowTime"))
+        windGustTime = NSDate(timeIntervalSince1970: aDecoder.decodeDouble(forKey: "windGustTime"))
+        uvIndexTime = NSDate(timeIntervalSince1970: aDecoder.decodeDouble(forKey: "uvIndexTime"))
+        
     }
+    
+    override public func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(moonPhase, forKey: "moonPhase")
+        aCoder.encode(apparentTemperatureHigh, forKey: "apparentTemperatureHigh")
+        aCoder.encode(apparentTemperatureHighTime, forKey: "apparentTemperatureHighTime")
+        aCoder.encode(apparentTemperatureLow, forKey: "apparentTemperatureLow")
+        aCoder.encode(apparentTemperatureLowTime, forKey: "apparentTemperatureLowTime")
+        aCoder.encode(sunriseTime, forKey: "sunriseTime")
+        aCoder.encode(sunsetTime, forKey: "sunsetTime")
+        aCoder.encode(precipIntensityMax, forKey: "precipIntensityMax")
+        aCoder.encode(precipIntensityMaxTime, forKey: "precipIntensityMaxTime")
+        aCoder.encode(temperatureHigh, forKey: "temperatureHigh")
+        aCoder.encode(temperatureHighTime, forKey: "temperatureHighTime")
+        aCoder.encode(temperatureLow, forKey: "temperatureLow")
+        aCoder.encode(temperatureLowTime, forKey: "temperatureLowTime")
+        aCoder.encode(windGustTime, forKey: "windGustTime")
+        aCoder.encode(uvIndexTime, forKey: "uvIndexTime")
+    }
+    
+//    override func toJSON() -> Dictionary<String, Any?> {
+//        var sup = super.toJSON()
+//        sup["moonPhase"] = self.moonPhase
+//        sup["apparentTemperatureHigh"] = self.apparentTemperatureHigh
+//        sup["apparentTemperatureHighTime"] = self.apparentTemperatureHighTime?.timeIntervalSince1970
+//        sup["apparentTemperatureLow"] = self.apparentTemperatureLow
+//        sup["apparentTemperatureLowTime"] = self.apparentTemperatureLowTime?.timeIntervalSince1970
+//        sup["sunriseTime"] = self.sunriseTime?.timeIntervalSince1970
+//        sup["sunsetTime"] = self.sunsetTime?.timeIntervalSince1970
+//        sup["precipIntensityMax"] = self.precipIntensityMax
+//        sup["precipIntensityMaxTime"] = self.precipIntensityMaxTime?.timeIntervalSince1970
+//        sup["temperatureHigh"] = self.temperatureHigh
+//        sup["temperatureHighTime"] = self.temperatureHighTime?.timeIntervalSince1970
+//        sup["temperatureLow"] = self.temperatureLow
+//        sup["temperatureLowTime"] = self.temperatureLowTime?.timeIntervalSince1970
+//        sup["windGustTime"] = self.windGustTime
+//        sup["uvIndexTime"] = self.uvIndexTime
+//        return sup
+//    }
 }

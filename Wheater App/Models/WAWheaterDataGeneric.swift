@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class WAWheaterDataGeneric : NSObject {
+class WAWheaterDataGeneric : NSObject, NSCoding {
     
     var time : NSDate? = nil//1516442400,
     var summary : String? = nil//"Pluie Faible",
@@ -88,25 +88,66 @@ class WAWheaterDataGeneric : NSObject {
             }
         }
     }
-    func toJSON() -> Dictionary<String, Any?> {
-        return [
-            "time": self.time?.timeIntervalSince1970,
-            "icon" : WAEnumConverter.reverse(byIcon: self.icon),
-            "precipIntensity" : self.precipIntensity,
-            "precipProbability" : self.precipProbability,
-            "precipType" : WAEnumConverter.reverse(byIcon: self.precipType),
-            "temperature" : self.temperature,
-            "apparentTemperature" : self.apparentTemperature,
-            "dewPoint" : self.dewPoint,
-            "humidity" : self.humidity,
-            "pressure" : self.pressure,
-            "windSpeed" : self.windSpeed,
-            "windGust" : self.windGust,
-            "windBearing" : self.windBearing,
-            "cloudCover" : self.cloudCover,
-            "uvIndex" : self.uvIndex,
-            "visibility" : self.visibility,
-            "ozone" : self.ozone
-        ]
+    required init?(coder aDecoder: NSCoder) {
+        time = NSDate(timeIntervalSince1970: aDecoder.decodeDouble(forKey: "time"))
+        summary = aDecoder.decodeObject(forKey: "summary") as? String
+        icon = WAEnumConverter.convert(byString: aDecoder.decodeObject(forKey: "icon") as! String)
+        precipIntensity = aDecoder.decodeDouble(forKey: "precipIntensity")
+        precipProbability = aDecoder.decodeDouble(forKey: "precipProbability")
+        precipType = WAEnumConverter.convert(byString: aDecoder.decodeObject(forKey: "precipType") as! String)
+        temperature = aDecoder.decodeDouble(forKey: "temperature")
+        apparentTemperature = aDecoder.decodeDouble(forKey: "apparentTemperature")
+        dewPoint = aDecoder.decodeDouble(forKey: "dewPoint")
+        humidity = aDecoder.decodeDouble(forKey: "humidity")
+        pressure = aDecoder.decodeDouble(forKey: "pressure")
+        windSpeed = aDecoder.decodeDouble(forKey: "windSpeed")
+        windGust = aDecoder.decodeDouble(forKey: "windGust")
+        windBearing = aDecoder.decodeInt32(forKey: "windBearing")
+        cloudCover = aDecoder.decodeDouble(forKey: "cloudCover")
+        uvIndex = aDecoder.decodeInt32(forKey: "uvIndex")
+        visibility = aDecoder.decodeDouble(forKey: "visibility")
+        ozone = aDecoder.decodeDouble(forKey: "ozone")
     }
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(time, forKey: "time")
+        aCoder.encode(summary, forKey: "summary")
+        aCoder.encode(WAEnumConverter.reverse(byIcon: icon), forKey: "icon")
+        aCoder.encode(precipIntensity, forKey: "precipIntensity")
+        aCoder.encode(precipProbability, forKey: "precipProbability")
+        aCoder.encode(WAEnumConverter.reverse(byIcon: precipType), forKey: "precipType")
+        aCoder.encode(temperature, forKey: "temperature")
+        aCoder.encode(apparentTemperature, forKey: "apparentTemperature")
+        aCoder.encode(dewPoint, forKey: "dewPoint")
+        aCoder.encode(humidity, forKey: "humidity")
+        aCoder.encode(pressure, forKey: "pressure")
+        aCoder.encode(windSpeed, forKey: "windSpeed")
+        aCoder.encode(windGust, forKey: "windGust")
+        aCoder.encode(windBearing, forKey: "windBearing")
+        aCoder.encode(cloudCover, forKey: "cloudCover")
+        aCoder.encode(uvIndex, forKey: "uvIndex")
+        aCoder.encode(visibility, forKey: "visibility")
+        aCoder.encode(ozone, forKey: "ozone")
+    }
+//    func toJSON() -> Dictionary<String, Any?> {
+//        return [
+//            "time": self.time?.timeIntervalSince1970,
+//            "icon" : WAEnumConverter.reverse(byIcon: self.icon),
+//            "precipIntensity" : self.precipIntensity,
+//            "precipProbability" : self.precipProbability,
+//            "precipType" : WAEnumConverter.reverse(byIcon: self.precipType),
+//            "temperature" : self.temperature,
+//            "apparentTemperature" : self.apparentTemperature,
+//            "dewPoint" : self.dewPoint,
+//            "humidity" : self.humidity,
+//            "pressure" : self.pressure,
+//            "windSpeed" : self.windSpeed,
+//            "windGust" : self.windGust,
+//            "windBearing" : self.windBearing,
+//            "cloudCover" : self.cloudCover,
+//            "uvIndex" : self.uvIndex,
+//            "visibility" : self.visibility,
+//            "ozone" : self.ozone
+//        ]
+//    }
 }

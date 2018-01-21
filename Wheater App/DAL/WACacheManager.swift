@@ -35,19 +35,20 @@ class WACaheManager : NSObject {
     }
     
     //MARK: handle favorite places cache
+    
     func store(datas:WALocationAndWheater) {
         let l = self.favorites.filter { $0.location?.geonameId == datas.location?.geonameId }
         if l.count == 0 {
             self.favorites.append(datas)
         }
         
-        self.defaults.set(self.favorites.map({ $0.toJSON() }) , forKey: kCacheKeyCachedFavoritePlaces)
+        self.defaults.set(NSKeyedArchiver.archivedData(withRootObject: self.favorites as NSArray) as NSData, forKey: kCacheKeyCachedFavoritePlaces)
         self.defaults.synchronize()
         
     }
     func remove(byId id: Int64) {
         let l = self.favorites.filter { $0.location?.geonameId != id }
-        self.defaults.set(l.map({ $0.toJSON() }), forKey: kCacheKeyCachedFavoritePlaces)
+        self.defaults.set(NSKeyedArchiver.archivedData(withRootObject:l as NSArray) as NSData, forKey: kCacheKeyCachedFavoritePlaces)
         self.defaults.synchronize()
     }
     
@@ -63,19 +64,6 @@ class WACaheManager : NSObject {
                 }
             }
         }
-//        if let string = self.defaults.value(forKey: kCacheKeyCachedFavoritePlaces) as? String {
-//            self.favorites = Array<WALocationAndWheater>()
-////            let dataString = string.data(using: .utf8, allowLossyConversion: false)
-//            if let list = try? JSON(data:dataString!) {
-//                if let items = list.array  {
-////                    self.favorites = items
-//                    for item in items {
-//                        self.favorites.append(WALocationAndWheater(fromJSON: item))
-//                    }
-//                }
-//            }
-//
-//        }
         return self.favorites
     }
     

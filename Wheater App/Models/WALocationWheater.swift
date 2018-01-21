@@ -16,9 +16,9 @@ class WALocationWheater : NSObject {
     var longitude : Double = 0
     var timezone : String? = nil
     
-    var currently : WAWheaterDataGeneric? = nil
-    var daily : WAWheaterDataDayGlobal? = nil
-    var hourly : WAWheaterDataGlobal? = nil
+    var currently : WAWheaterDataGeneric = WAWheaterDataGeneric(json: nil)
+    var daily : WAWheaterDataDayGlobal = WAWheaterDataDayGlobal(json: nil)
+    var hourly : WAWheaterDataGlobal = WAWheaterDataGlobal(json: nil)
     
     init(json: Any?) {  
         super.init()
@@ -51,17 +51,17 @@ class WALocationWheater : NSObject {
             self.hourly = WAWheaterDataGlobal(json: hrly)
         }
     }
-    
-    func toJSON() -> Dictionary<String, Any?> {
-        return [
-            "latitude" : self.latitude,
-            "longitude" : self.longitude,
-            "timezone" : self.timezone,
-            "currently" : self.currently?.toJSON(),
-            "daily" : self.daily?.toJSON(),
-            "hourly" : self.daily?.toJSON()
-        ]
-    }
+//    
+//    func toJSON() -> Dictionary<String, Any?> {
+//        return [
+//            "latitude" : self.latitude,
+//            "longitude" : self.longitude,
+//            "timezone" : self.timezone,
+//            "currently" : self.currently.toJSON(),
+//            "daily" : self.daily.toJSON(),
+//            "hourly" : self.hourly.toJSON()
+//        ]
+//    }
     
 
     

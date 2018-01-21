@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 
-class WALocationAndWheater : NSObject {
+class WALocationAndWheater : NSObject, NSCoding {
     var location : WALocation? = nil
     var wheater : WALocationWheater? = nil
     
@@ -18,11 +18,19 @@ class WALocationAndWheater : NSObject {
         super.init()
         if let root = json as? JSON {
             if let datas = root.dictionary {
-                self.fetch(datas: datas)
+                if let loc = datas["location"]?.dictionary {
+                    self.location = WALocation(json: loc)
+                }
+                if let wht = datas["wheater"]?.dictionary {
+                    self.wheater = WALocationWheater(json: wht)
+                }
             }
-        } else if let datas = json as? Dictionary<String, JSON> {
-            self.fetch(datas: datas)
         }
+    }
+    
+    init(location:WALocation) {
+        super.init()
+        self.location = location
     }
     
     init(location: WALocation, wheater: WALocationWheater) {
@@ -31,20 +39,18 @@ class WALocationAndWheater : NSObject {
         self.wheater = wheater
     }
     
-    private func fetch(datas: Dictionary<String, JSON>) {
-        if let loc = datas["location"]?.dictionary {
-            self.location = WALocation(json: loc)
+    required init?(coder aDecoder: NSCoder) {
+        if let loc = aDecoder.decodeObject(forKey: "location") as? WALocation {
+            location = loc
         }
-        if let wht = datas["wheater"]?.dictionary {
-            self.wheater = WALocationWheater(json: wht)
+        if let wh = aDecoder.decodeObject(forKey: "wheater") as? WALocationWheater {
+            wheater = wh
         }
+        
     }
-    
-    func toJSON() -> Dictionary<String, Any?> {
-        return [
-            "location":self.location?.toJSON(),
-            "wheater" : self.wheater?.toJSON()
-        ]
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(location, forKey: "location")
+        aCoder.encode(wheater, forKey: "wheater")
     }
 }
 
