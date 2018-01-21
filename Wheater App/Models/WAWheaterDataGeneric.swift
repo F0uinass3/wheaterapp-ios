@@ -89,7 +89,9 @@ class WAWheaterDataGeneric : NSObject, NSCoding {
         }
     }
     required init?(coder aDecoder: NSCoder) {
-        time = NSDate(timeIntervalSince1970: aDecoder.decodeDouble(forKey: "time"))
+        if let t = aDecoder.decodeObject(forKey: "time") as? Double {
+            time = NSDate(timeIntervalSince1970: t)
+        }
         summary = aDecoder.decodeObject(forKey: "summary") as? String
         icon = WAEnumConverter.convert(byString: aDecoder.decodeObject(forKey: "icon") as! String)
         precipIntensity = aDecoder.decodeDouble(forKey: "precipIntensity")
@@ -110,7 +112,7 @@ class WAWheaterDataGeneric : NSObject, NSCoding {
     }
     
     public func encode(with aCoder: NSCoder) {
-        aCoder.encode(time, forKey: "time")
+        aCoder.encode(time?.timeIntervalSince1970, forKey: "time")
         aCoder.encode(summary, forKey: "summary")
         aCoder.encode(WAEnumConverter.reverse(byIcon: icon), forKey: "icon")
         aCoder.encode(precipIntensity, forKey: "precipIntensity")
@@ -129,25 +131,4 @@ class WAWheaterDataGeneric : NSObject, NSCoding {
         aCoder.encode(visibility, forKey: "visibility")
         aCoder.encode(ozone, forKey: "ozone")
     }
-//    func toJSON() -> Dictionary<String, Any?> {
-//        return [
-//            "time": self.time?.timeIntervalSince1970,
-//            "icon" : WAEnumConverter.reverse(byIcon: self.icon),
-//            "precipIntensity" : self.precipIntensity,
-//            "precipProbability" : self.precipProbability,
-//            "precipType" : WAEnumConverter.reverse(byIcon: self.precipType),
-//            "temperature" : self.temperature,
-//            "apparentTemperature" : self.apparentTemperature,
-//            "dewPoint" : self.dewPoint,
-//            "humidity" : self.humidity,
-//            "pressure" : self.pressure,
-//            "windSpeed" : self.windSpeed,
-//            "windGust" : self.windGust,
-//            "windBearing" : self.windBearing,
-//            "cloudCover" : self.cloudCover,
-//            "uvIndex" : self.uvIndex,
-//            "visibility" : self.visibility,
-//            "ozone" : self.ozone
-//        ]
-//    }
 }

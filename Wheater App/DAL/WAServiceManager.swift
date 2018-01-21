@@ -12,11 +12,17 @@ import SwiftyJSON
 import CocoaLumberjack
 
 
+protocol WAServiceDownloadProtocol : class {
+    func bulkCompletion(wheaters:Array<WALocationAndWheater>?)
+}
+
+
 class WAServiceManager : NSObject {
     //MARK: Singleton declaration
     static let sharedInstance : WAServiceManager = WAServiceManager()
     
-
+    weak var delegate : WAServiceDownloadProtocol?
+    
     //MARK: Private const
     private let kDarkSkyApiKey = "16178161b8aad3e84ceba8441e3e15eb"
     private let kDarkSkyURL = "https://api.darksky.net/forecast/%@/%@" // https://api.darksky.net/forecast/%@/%@lat,%@long
@@ -78,7 +84,8 @@ class WAServiceManager : NSObject {
         let coords = String(format:"%f,%f", location.latitude, location.longitude)
         let stringUrl = String(format:kDarkSkyURL, kDarkSkyApiKey, coords)
         let params : Parameters = [
-            "lang": "fr"
+            "lang": "fr",
+            "units" : "ca"
         ]
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         DLog(format: "WAServiceManager::getWheater() : URL = %@", args: stringUrl)
@@ -105,6 +112,31 @@ class WAServiceManager : NSObject {
         }
     }
     
-    
-    
+    func fetchBulk(locations:Array<WALocation>) {
+        let max = locations.count
+        var counter = max
+        var results = Array<WALocationAndWheater>()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        for loc in locations {
+            let coords = String(format:"%f,%f", loc.latitude, loc.longitude)
+            let stringUrl = String(format:kDarkSkyURL, kDarkSkyApiKey, coords)
+            let params : Parameters = [
+                "lang": "fr",
+                "units" : "ca"
+            ]
+            Alamofire.request(stringUrl, method: .get, parameters: params, encoding: URLEncoding.queryString)
+                .responseJSON(completionHandler: { (resp) in
+                    counter -= 1
+                    if resp.error == nil, let d = resp.data {
+                        if let json = try? JSON(data:d) {
+                            results.append(WALocationAndWheater(location: loc, wheater: WALocationWheater(json: json)))
+                        }
+                    }
+                    if counter == 0 {
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                        self.delegate?.bulkCompletion(wheaters: results)
+                    }
+                })
+        }
+    }
 }

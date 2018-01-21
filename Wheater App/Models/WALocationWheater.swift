@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class WALocationWheater : NSObject {
+class WALocationWheater : NSObject, NSCoding {
     
     
     var latitude : Double = 0
@@ -24,32 +24,43 @@ class WALocationWheater : NSObject {
         super.init()
         if let root = json as? JSON {
             if let datas = root.dictionary {
-                self.fetch(datas: datas)
+                if let lt = datas["latitude"]?.double {
+                    self.latitude = lt
+                }
+                if let lg = datas["longitude"]? .double {
+                    self.longitude = lg
+                }
+                if let tz = datas["timezone"]?.string {
+                    self.timezone = tz
+                }
+                if let curr = datas["currently"]?.dictionary {
+                    self.currently = WAWheaterDataGeneric(json: curr)
+                }
+                if let dly = datas["daily"]?.dictionary {
+                    self.daily = WAWheaterDataDayGlobal(json: dly)
+                }
+                if let hrly = datas["hourly"]?.dictionary {
+                    self.hourly = WAWheaterDataGlobal(json: hrly)
+                }
             }
-        } else if let datas = json as? Dictionary<String, JSON> {
-            self.fetch(datas: datas)
         }
     }
+    required init?(coder aDecoder: NSCoder) {
+        latitude = aDecoder.decodeDouble(forKey: "latitude")
+        longitude = aDecoder.decodeDouble(forKey: "longitude")
+        timezone = aDecoder.decodeObject(forKey: "timezone") as? String
+        currently = aDecoder.decodeObject(forKey: "currently") as! WAWheaterDataGeneric
+        daily = aDecoder.decodeObject(forKey: "daily") as! WAWheaterDataDayGlobal
+        hourly = aDecoder.decodeObject(forKey: "hourly") as! WAWheaterDataGlobal
+    }
     
-    private func fetch(datas: Dictionary<String, JSON>) {
-        if let lt = datas["latitude"]?.double {
-            self.latitude = lt
-        }
-        if let lg = datas["longitude"]? .double {
-            self.longitude = lg
-        }
-        if let tz = datas["timezone"]?.string {
-            self.timezone = tz
-        }
-        if let curr = datas["currently"]?.dictionary {
-            self.currently = WAWheaterDataGeneric(json: curr)
-        }
-        if let dly = datas["daily"]?.dictionary {
-            self.daily = WAWheaterDataDayGlobal(json: dly)
-        }
-        if let hrly = datas["hourly"]?.dictionary {
-            self.hourly = WAWheaterDataGlobal(json: hrly)
-        }
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(latitude, forKey: "latitude")
+        aCoder.encode(longitude, forKey: "longitude")
+        aCoder.encode(timezone, forKey: "timezone")
+        aCoder.encode(currently, forKey: "currently")
+        aCoder.encode(daily, forKey: "daily")
+        aCoder.encode(hourly, forKey: "hourly")
     }
 //    
 //    func toJSON() -> Dictionary<String, Any?> {

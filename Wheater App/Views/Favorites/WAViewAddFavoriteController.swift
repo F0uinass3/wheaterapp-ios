@@ -11,7 +11,6 @@ import UIKit
 
 class WAViewAddFavoriteController : UIViewController {
     
-    let unwindSegueIdentifier : String = "closeAddFavorite"
     let cellReusableIdentifier : String = "WAViewAddFavoriteControllercellReusableIdentifier"
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableview: UITableView!

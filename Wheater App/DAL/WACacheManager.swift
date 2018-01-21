@@ -46,25 +46,37 @@ class WACaheManager : NSObject {
         self.defaults.synchronize()
         
     }
+    func update(location:WALocation, datas:WALocationWheater) {
+        let l = self.favorites.filter { $0.location?.geonameId == location.geonameId }
+        if l.count == 1 {
+            let item = l.first!
+            item.wheater = datas
+        }
+        self.defaults.set(NSKeyedArchiver.archivedData(withRootObject: self.favorites as NSArray) as NSData, forKey: kCacheKeyCachedFavoritePlaces)
+        self.defaults.synchronize()
+    }
+    
     func remove(byId id: Int64) {
         let l = self.favorites.filter { $0.location?.geonameId != id }
         self.defaults.set(NSKeyedArchiver.archivedData(withRootObject:l as NSArray) as NSData, forKey: kCacheKeyCachedFavoritePlaces)
         self.defaults.synchronize()
     }
     
-    
+    func replace(wheaters:Array<WALocationAndWheater>) {
+        self.favorites = wheaters
+        self.defaults.set(NSKeyedArchiver.archivedData(withRootObject: self.favorites as NSArray) as NSData, forKey: kCacheKeyCachedFavoritePlaces)
+        self.defaults.synchronize()
+    }
     
     func get() -> Array<WALocationAndWheater>? {
-        if let datas = self.defaults.value(forKey: kCacheKeyCachedFavoritePlaces) {
-            if let json = try? JSON(datas) {
-                if let items = json.array {
-                    for item in items {
-                        self.favorites.append(WALocationAndWheater(json: item.dictionary))
-                    }
-                }
+        if let unarchivedObject = self.defaults.object(forKey: kCacheKeyCachedFavoritePlaces) as? Data {
+            if let list = NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as? Array<WALocationAndWheater> {
+                self.favorites = list
             }
         }
+        
         return self.favorites
+        
     }
     
     

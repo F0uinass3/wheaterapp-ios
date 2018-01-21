@@ -10,14 +10,25 @@ import Foundation
 import UIKit
 
 class WAViewFavoriteListController : UIViewController {
+    static let segueNavigateDetail : String = "SegueNavigateDetail"
+    private let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableview: UITableView!
-    
+    @IBOutlet weak var updateLabel: UILabel!
     
     var items = Array<WALocationAndWheater>()
+    var selected : WALocationAndWheater?
     
     override func viewDidLoad() {
-        self.tableview.register(WAFavoriteCell.self, forCellReuseIdentifier: WAFavoriteCell.reusableIdentifier)
+        
+        WAServiceManager.sharedInstance.delegate = self
+        self.refreshControl.addTarget(self, action: #selector(pull(sender:)), for: .valueChanged)
+        
+        self.tableview.refreshControl = self.refreshControl
+        
+        if let list = WACaheManager.sharedInstance.get() {
+            self.items = list
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,17 +39,27 @@ class WAViewFavoriteListController : UIViewController {
     func reload() {
         if let list = WACaheManager.sharedInstance.get() {
             self.items = list
-            self.tableview.reloadData()
         }
-        
+        WAServiceManager.sharedInstance.fetchBulk(locations: self.items.map({ $0.location! }))
     }
     
     @IBAction func edit(sender:Any?) {
         
     }
+    @objc func pull(sender:Any?) {
+        self.reload()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == WAViewFavoriteListController.segueNavigateDetail {
+            (segue.destination as! WAViewDetailContainer).wheater = self.selected
+        }
+    }
 }
 
-extension WAViewFavoriteListController : UITableViewDelegate, UITableViewDataSource {
+
+
+extension WAViewFavoriteListController : UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -47,12 +68,35 @@ extension WAViewFavoriteListController : UITableViewDelegate, UITableViewDataSou
         return self.items.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableview.dequeueReusableCell(withIdentifier: WAFavoriteCell.reusableIdentifier, for: indexPath)
+        let cell = self.tableview.dequeueReusableCell(withIdentifier: WAFavoriteCell.reusableIdentifier, for: indexPath) as! WAFavoriteCell
         let item = self.items[indexPath.row]
-        if let location = item.location {
-            cell.textLabel?.text = String(format:"%@, %@", location.name, location.countryName)
-        }
-        
+        cell.setItem(item: item)
         return cell
     }
 }
+
+extension WAViewFavoriteListController : WAServiceDownloadProtocol {
+    func bulkCompletion(wheaters:Array<WALocationAndWheater>?) {
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+            self.updateLabel.text = Date().toString()
+            if let list = wheaters {
+                WACaheManager.sharedInstance.replace(wheaters: list)
+                if let list = WACaheManager.sharedInstance.get() {
+                    self.items = list
+                    self.tableview.reloadData()
+                }
+            }
+        }
+        
+    }
+}
+
+extension WAViewFavoriteListController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selected = self.items[indexPath.row]
+        self.performSegue(withIdentifier: WAViewFavoriteListController.segueNavigateDetail, sender: self)
+
+    }
+}
+

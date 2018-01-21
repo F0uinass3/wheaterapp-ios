@@ -13,3 +13,4 @@
 
 
 "ERROR_MESSAGE_GEONAME_API_ERROR" = "Une erreur est survenue durant l'appel à Geonames.org : %@";
+"ERROR_MESSAGE_DARKSKY_API_ERROR" = "Une erreur est survenue durant l'appel à DarkSky.net : %@";
